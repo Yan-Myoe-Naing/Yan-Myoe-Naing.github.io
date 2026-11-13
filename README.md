@@ -33,7 +33,7 @@ Tip: add a good *About* description and some *Topics* to the repo on GitHub, bec
 ```
 
 - `repo` is the exact repo name on GitHub. It links the card and fills in the year.
-- `featured: true` puts it in the big card carousel. Everything is always listed in **All work**.
+- Every project gets a card in the carousel and a row in **All work**. `featured: true` moves it to the front of the carousel.
 - Optional: `"demo": "https://..."` adds a demo link, and `"year": "2026"` overrides the year.
 - Order in the file = order on the site.
 

@@ -87,6 +87,7 @@ img { max-width: 100%; display: block; }
   background: var(--paper);
 }
 .hero__dots {
+  touch-action: pan-y;        /* phones can still scroll the page over the grid */
   position: absolute;
   left: var(--rail);
   top: 36px;
@@ -136,9 +137,10 @@ img { max-width: 100%; display: block; }
 .hero__lens {
   position: absolute;
   z-index: 1;
-  right: 13%;
-  bottom: 12%;
-  width: 250px; height: 250px;
+  right: 540px;               /* sits left of the name/text column so it never covers the button */
+  bottom: 10%;
+  width: 230px; height: 230px;
+  pointer-events: none;
 }
 .hero__note {
   position: absolute;
