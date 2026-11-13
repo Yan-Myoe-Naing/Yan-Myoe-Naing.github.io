@@ -39,6 +39,11 @@ Tip: add a good *About* description and some *Topics* to the repo on GitHub, bec
 
 To hide a repo, add its name to `settings.hide_repos`.
 
+## After changing styles.css or app.js
+
+In `index.html`, bump the number in `styles.css?v=4` / `app.js?v=4` (e.g. to `v=5`).
+This makes visitors' browsers download the new file instead of using an old cached copy.
+
 ## Run it locally
 
 `fetch()` doesn't work when you open the file directly from disk, so start a tiny server first:
