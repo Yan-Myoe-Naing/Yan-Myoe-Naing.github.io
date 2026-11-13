@@ -1,0 +1,137 @@
+{
+  "_help": "Edit this file to change the site. See README.md for how to add a project.",
+  "profile": {
+    "name": "YAN MYOE NAING",
+    "nickname": "Louis",
+    "tagline": "Turning messy data into models, insights and tools people can actually use.",
+    "subtitle": "Applied AI & Analytics student at Singapore Polytechnic",
+    "github_user": "Yan-Myoe-Naing",
+    "email": "",
+    "linkedin": ""
+  },
+  "settings": {
+    "auto_load_github_repos": true,
+    "hide_repos": [
+      "Yan-Myoe-Naing",
+      "Yan-Myoe-Naing.github.io",
+      "portfolio"
+    ],
+    "show_forks": false
+  },
+  "skills": [
+    {
+      "group": "Languages",
+      "items": [
+        "Python",
+        "SQL",
+        "HTML / CSS"
+      ]
+    },
+    {
+      "group": "Machine learning",
+      "items": [
+        "Regression",
+        "Classification",
+        "Clustering & PCA",
+        "Time-series forecasting"
+      ]
+    },
+    {
+      "group": "Deep learning",
+      "items": [
+        "CNNs",
+        "RNNs",
+        "GANs / VAEs",
+        "Transformers"
+      ]
+    },
+    {
+      "group": "Data & tools",
+      "items": [
+        "Pandas",
+        "Tableau",
+        "Power BI",
+        "UiPath",
+        "Git & GitHub"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "title": "Machine Failure Detection",
+      "repo": "machine-failure-detection",
+      "summary": "Machine learning for detecting industrial equipment failures before they happen.",
+      "tags": [
+        "Classification",
+        "Python",
+        "ML"
+      ],
+      "featured": true
+    },
+    {
+      "title": "House Price Prediction",
+      "repo": "house-price-prediction",
+      "summary": "A regression project estimating house prices from property features.",
+      "tags": [
+        "Regression",
+        "Python",
+        "ML"
+      ],
+      "featured": true
+    },
+    {
+      "title": "Customer Clustering",
+      "repo": "customer-clustering",
+      "summary": "Grouping customers into segments with clustering, using PCA to explore and visualise the groups.",
+      "tags": [
+        "Clustering",
+        "PCA",
+        "Python"
+      ],
+      "featured": true
+    },
+    {
+      "title": "Energy Consumption Forecasting",
+      "repo": "energy-consumption-forecasting",
+      "summary": "Time-series models forecasting electricity, gas and water consumption.",
+      "tags": [
+        "Time series",
+        "Forecasting",
+        "Python"
+      ],
+      "featured": true
+    },
+    {
+      "title": "Handwritten Letter Recognition",
+      "repo": "handwritten-letter-recognition-cnn",
+      "summary": "A CNN trained on EMNIST to recognise handwritten letters, with a drawing demo to test it live.",
+      "tags": [
+        "CNN",
+        "Deep learning",
+        "EMNIST"
+      ],
+      "featured": true
+    },
+    {
+      "title": "Job Market Application Analysis",
+      "repo": "job-market-application-analysis",
+      "summary": "Analysing applications, salaries, visibility and demand across job titles.",
+      "tags": [
+        "Data analysis",
+        "Visualisation"
+      ],
+      "featured": false
+    },
+    {
+      "title": "Singapore Graduate Career Outcomes",
+      "repo": "singapore-graduate-career-outcomes",
+      "summary": "Exploring Singapore graduate career outcomes by degree and gender, with UiPath automation.",
+      "tags": [
+        "Data analysis",
+        "UiPath",
+        "Automation"
+      ],
+      "featured": false
+    }
+  ]
+}

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Yan Myoe Naing — AI & Analytics Portfolio</title>
+  <meta name="description" content="Portfolio of Yan Myoe Naing (Louis): machine learning, deep learning and data analytics projects." />
+  <link rel="preload" href="fonts/bagel-fat-one-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22%3E%3Crect width=%2216%22 height=%2216%22 fill=%22%237db6ec%22/%3E%3C/svg%3E" />
+</head>
+<body>
+
+  <!-- SVG filter that makes text look liquid / blobby -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <filter id="goo">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur" />
+      <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+      <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+    </filter>
+  </svg>
+
+  <!-- Left rail: tick marks that act as section navigation -->
+  <nav class="rail" aria-label="Sections">
+    <a href="#top" class="rail__tick is-active" data-label="Index"></a>
+    <a href="#projects" class="rail__tick" data-label="Projects"></a>
+    <a href="#all-work" class="rail__tick" data-label="All work"></a>
+    <a href="#about" class="rail__tick" data-label="About"></a>
+    <a href="#contact" class="rail__tick" data-label="Contact"></a>
+    <span class="rail__square"></span>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <header class="hero" id="top">
+    <canvas class="hero__dots" id="heroDots" aria-hidden="true"></canvas>
+
+    <div class="hero__corner" aria-hidden="true"><span></span><span></span></div>
+
+    <div class="hero__text">
+      <h1 class="hero__name" data-field="name">YAN MYOE NAING</h1>
+      <p class="hero__aka mono">aka <span data-field="nickname">Louis</span> · portfolio 2026</p>
+      <p class="hero__subtitle" data-field="subtitle">Applied AI &amp; Analytics student at Singapore Polytechnic</p>
+      <p class="hero__tagline" data-field="tagline">Turning messy data into models, insights and tools people can actually use.</p>
+      <a class="btn" href="#projects">See the work ↓</a>
+    </div>
+
+    <canvas class="hero__lens" id="heroLens" aria-hidden="true"></canvas>
+
+    <p class="hero__note mono" aria-hidden="true">fig. 01 — every square is a data point</p>
+  </header>
+
+  <!-- Marquee strip -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <span>Machine Learning ✦ Deep Learning ✦ Data Analytics ✦ Forecasting ✦ Computer Vision ✦ Visualisation ✦ Automation ✦&nbsp;</span>
+      <span>Machine Learning ✦ Deep Learning ✦ Data Analytics ✦ Forecasting ✦ Computer Vision ✦ Visualisation ✦ Automation ✦&nbsp;</span>
+    </div>
+  </div>
+
+  <main>
+    <!-- ============ FEATURED PROJECTS ============ -->
+    <section class="projects" id="projects">
+      <div class="projects__title-wrap">
+        <div class="droplets" id="droplets" aria-hidden="true"></div>
+        <h2 class="blob-title" aria-label="Projects">projects</h2>
+      </div>
+
+      <div class="projects__head">
+        <p class="mono projects__count"><span id="projectCount">0</span> projects · pulled live from GitHub</p>
+        <div class="carousel-btns">
+          <button class="round-btn" id="prevBtn" aria-label="Scroll left">←</button>
+          <button class="round-btn" id="nextBtn" aria-label="Scroll right">→</button>
+        </div>
+      </div>
+
+      <div class="carousel" id="featured" tabindex="0" aria-label="Featured projects">
+        <!-- cards are added by app.js -->
+      </div>
+    </section>
+
+    <!-- ============ ALL WORK ============ -->
+    <section class="all-work" id="all-work">
+      <div class="section-label">
+        <span class="page-num">02</span>
+        <h2>All work</h2>
+      </div>
+
+      <div class="filters" id="filters" role="group" aria-label="Filter projects by tag">
+        <!-- filter chips are added by app.js -->
+      </div>
+
+      <ol class="work-list" id="workList">
+        <!-- rows are added by app.js -->
+      </ol>
+    </section>
+
+    <!-- ============ ABOUT (zine style) ============ -->
+    <section class="about" id="about">
+      <svg class="arcs" viewBox="0 0 1200 800" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0,0 C300,400 300,400 0,800" />
+        <path d="M14,0 C314,400 314,400 14,800" />
+        <path d="M600,0 C300,400 300,400 600,800" />
+        <path d="M614,0 C314,400 314,400 614,800" />
+        <path d="M600,0 C900,400 900,400 600,800" />
+        <path d="M614,0 C914,400 914,400 614,800" />
+        <path d="M1200,0 C900,400 900,400 1200,800" />
+        <path d="M1186,0 C886,400 886,400 1186,800" />
+      </svg>
+
+      <div class="zine">
+        <article class="zine__page">
+          <span class="page-num">03</span>
+          <h3 class="mono">About me</h3>
+          <p>I'm <strong data-field="nickname">Louis</strong>, studying the Diploma in Applied AI &amp; Analytics at Singapore Polytechnic.
+             I like building practical things with data: models that predict, dashboards that explain, and small tools that save people time.</p>
+        </article>
+
+        <article class="zine__page zine__page--flip">
+          <span class="page-num">04</span>
+          <h3 class="mono">How I work</h3>
+          <p>I start with the question, not the model. I clean the data first, try a simple baseline, then experiment and
+             explain what worked, and what didn't, in plain language.</p>
+        </article>
+
+        <article class="zine__page zine__page--wide">
+          <span class="page-num">05</span>
+          <h3 class="mono">Toolkit</h3>
+          <div class="skills" id="skills">
+            <!-- skill groups are added by app.js -->
+          </div>
+        </article>
+
+        <article class="zine__page">
+          <span class="page-num">06</span>
+          <h3 class="mono">Also into</h3>
+          <p>Hackathons, team projects with Git &amp; GitHub, and workflow automation.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ CONTACT ============ -->
+  <footer class="contact" id="contact">
+    <h2 class="blob-title blob-title--blue" aria-label="Say hi">say hi</h2>
+    <div class="contact__links" id="contactLinks">
+      <!-- links are added by app.js -->
+    </div>
+    <p class="mono contact__small">© <span id="year"></span> <span data-field="name">Yan Myoe Naing</span> · Built with plain HTML, CSS &amp; JavaScript</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
