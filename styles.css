@@ -135,11 +135,10 @@ img { max-width: 100%; display: block; }
 .btn:hover { background: var(--blue-deep); transform: translateY(-2px); }
 
 .hero__lens {
-  position: absolute;
-  z-index: 1;
-  right: 540px;               /* sits left of the name/text column so it never covers the button */
-  bottom: 10%;
-  width: 230px; height: 230px;
+  /* lives inside the text column, under the button, so it never covers the grid art or the button */
+  display: block;
+  width: 210px; height: 210px;
+  margin: 40px 0 0 auto;
   pointer-events: none;
 }
 .hero__note {
@@ -461,7 +460,7 @@ img { max-width: 100%; display: block; }
   .hero { padding: 28px 20px 30px; }
   .hero__dots { left: 0; width: 100%; top: 0; height: 100%; opacity: .55; }
   .hero__text { margin-top: 30vh; text-align: left; margin-left: 0; background: rgba(251,251,252,.82); padding: 14px; border-radius: 12px; }
-  .hero__lens { width: 150px; height: 150px; right: 18px; top: 70px; bottom: auto; }
+  .hero__lens { width: 140px; height: 140px; margin: 24px 0 0; }
   .hero__corner { right: 20px; top: 20px; }
   .projects__head, .carousel { padding-left: 20px; padding-right: 20px; }
   .all-work, .about, .contact { padding-left: 20px; padding-right: 20px; }
