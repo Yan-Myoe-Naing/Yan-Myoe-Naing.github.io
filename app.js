@@ -94,6 +94,7 @@ function buildProjectList(config, repos) {
       url: p.link || repo?.html_url || (p.repo ? `https://github.com/${user}/${p.repo}` : `https://github.com/${user}`),
       demo: p.demo || repo?.homepage || "",
       featured: Boolean(p.featured),
+      categories: p.categories || [],
     };
   });
 
@@ -110,6 +111,7 @@ function buildProjectList(config, repos) {
       url: r.html_url,
       demo: r.homepage || "",
       featured: false,
+      categories: [],
     }));
 
   return [...curated, ...extra];
@@ -163,7 +165,9 @@ function renderFeatured(projects, user) {
 }
 
 function renderWorkList(projects, activeTag) {
-  const shown = activeTag ? projects.filter((p) => p.tags.includes(activeTag)) : projects;
+  const shown = activeTag
+    ? projects.filter((p) => p.categories.includes(activeTag) || p.tags.includes(activeTag))
+    : projects;
   $("#workList").innerHTML = shown.length
     ? shown.map((p, i) => `
       <li class="work-row reveal">
@@ -181,11 +185,15 @@ function renderWorkList(projects, activeTag) {
   observeReveals();
 }
 
-function renderFilters(projects) {
-  // Count tags and keep the most common ones as filter chips
-  const counts = {};
-  projects.forEach((p) => p.tags.forEach((t) => (counts[t] = (counts[t] || 0) + 1)));
-  const tags = Object.keys(counts).sort((a, b) => counts[b] - counts[a]).slice(0, 10);
+function renderFilters(projects, categories) {
+  // Filter buttons come from "filter_categories" in projects.json.
+  // If that list is missing, fall back to the most common tags.
+  let tags = (categories || []).filter((c) => projects.some((p) => p.categories.includes(c)));
+  if (!tags.length) {
+    const counts = {};
+    projects.forEach((p) => p.tags.forEach((t) => (counts[t] = (counts[t] || 0) + 1)));
+    tags = Object.keys(counts).sort((a, b) => counts[b] - counts[a]).slice(0, 8);
+  }
 
   $("#filters").innerHTML =
     `<button class="chip is-on" data-tag="">All</button>` +
@@ -667,7 +675,7 @@ async function init() {
 
   $("#projectCount").textContent = projects.length;
   renderFeatured(projects, profile.github_user);
-  renderFilters(projects);
+  renderFilters(projects, settings.filter_categories);
   renderWorkList(projects, "");
   observeReveals();
 }

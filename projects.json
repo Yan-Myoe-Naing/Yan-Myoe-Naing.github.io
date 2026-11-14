@@ -16,7 +16,14 @@
       "Yan-Myoe-Naing.github.io",
       "portfolio"
     ],
-    "show_forks": false
+    "show_forks": false,
+    "filter_categories": [
+      "Machine learning",
+      "Deep learning",
+      "Data analysis",
+      "Agentic AI",
+      "Web app"
+    ]
   },
   "skills": [
     {
@@ -68,6 +75,10 @@
         "React",
         "Team project"
       ],
+      "categories": [
+        "Agentic AI",
+        "Web app"
+      ],
       "year": "2026",
       "featured": true
     },
@@ -80,6 +91,9 @@
         "Python",
         "ML"
       ],
+      "categories": [
+        "Machine learning"
+      ],
       "featured": true
     },
     {
@@ -90,6 +104,9 @@
         "Regression",
         "Python",
         "ML"
+      ],
+      "categories": [
+        "Machine learning"
       ],
       "featured": true
     },
@@ -102,6 +119,9 @@
         "PCA",
         "Python"
       ],
+      "categories": [
+        "Machine learning"
+      ],
       "featured": true
     },
     {
@@ -112,6 +132,9 @@
         "Time series",
         "Forecasting",
         "Python"
+      ],
+      "categories": [
+        "Machine learning"
       ],
       "featured": true
     },
@@ -124,6 +147,9 @@
         "Deep learning",
         "EMNIST"
       ],
+      "categories": [
+        "Deep learning"
+      ],
       "featured": true
     },
     {
@@ -133,6 +159,9 @@
       "tags": [
         "Data analysis",
         "Visualisation"
+      ],
+      "categories": [
+        "Data analysis"
       ],
       "featured": false
     },
@@ -145,6 +174,9 @@
         "UiPath",
         "Automation"
       ],
+      "categories": [
+        "Data analysis"
+      ],
       "featured": false
     },
     {
@@ -156,6 +188,9 @@
         "Express",
         "MySQL",
         "JWT"
+      ],
+      "categories": [
+        "Web app"
       ],
       "featured": true
     }
