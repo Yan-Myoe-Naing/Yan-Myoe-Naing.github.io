@@ -58,6 +58,20 @@
   ],
   "projects": [
     {
+      "title": "CLARITY — Agentic AI Insurance Navigator",
+      "repo": "",
+      "link": "https://github.com/William35-f/Clarity-Agentic-AI-insurance-navigator",
+      "summary": "Team Aspire hackathon prototype: six AI agents support an insurance consultation, with live meeting cues, policy sources, meeting records and customer follow-up. Represented Singapore Polytechnic at the category finals.",
+      "tags": [
+        "Agentic AI",
+        "OpenAI",
+        "React",
+        "Team project"
+      ],
+      "year": "2026",
+      "featured": true
+    },
+    {
       "title": "Machine Failure Detection",
       "repo": "machine-failure-detection",
       "summary": "Machine learning for detecting industrial equipment failures before they happen.",
@@ -132,6 +146,18 @@
         "Automation"
       ],
       "featured": false
+    },
+    {
+      "title": "Wellness Challenge Game",
+      "repo": "Wellness_Challenge_Game",
+      "summary": "A strategy game where completing wellness challenges earns points to build cities, recruit armies and form alliances. Full-stack CRUD app with login.",
+      "tags": [
+        "Node.js",
+        "Express",
+        "MySQL",
+        "JWT"
+      ],
+      "featured": true
     }
   ]
 }

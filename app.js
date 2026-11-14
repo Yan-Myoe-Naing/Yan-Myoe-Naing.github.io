@@ -30,7 +30,7 @@ const esc = (text) =>
 
 // "Machine Failure Detection" -> "mf"
 const initials = (title) =>
-  title.split(/\s+/).filter(Boolean).slice(0, 2).map((w) => w[0]).join("").toLowerCase();
+  title.split(/\s+/).filter((w) => /^[a-z0-9]/i.test(w)).slice(0, 2).map((w) => w[0]).join("").toLowerCase();
 
 // ---------- 1. load config ----------
 async function loadConfig() {
