@@ -21,6 +21,7 @@
       "Machine learning",
       "Deep learning",
       "Data analysis",
+      "Data engineering",
       "Agentic AI",
       "Web app"
     ]
@@ -56,6 +57,8 @@
       "group": "Data & tools",
       "items": [
         "Pandas",
+        "MySQL",
+        "DuckDB",
         "Tableau",
         "Power BI",
         "UiPath",
@@ -80,6 +83,35 @@
         "Web app"
       ],
       "year": "2026",
+      "featured": true
+    },
+    {
+      "title": "Library Data Engineering Pipeline",
+      "repo": "library-data-engineering-pipeline",
+      "summary": "End-to-end pipeline for a library: MySQL operational database, a star-schema data warehouse, and a Bronze/Silver/Gold data lake in Parquet with DuckDB reporting. It validates 12,343 completed loans, and invalid rows go to quarantine instead of being deleted.",
+      "tags": [
+        "MySQL",
+        "Python",
+        "DuckDB",
+        "Parquet"
+      ],
+      "categories": [
+        "Data engineering"
+      ],
+      "featured": true
+    },
+    {
+      "title": "Library Management Database",
+      "repo": "library-management-database",
+      "summary": "A MySQL relational database for members, tiers, staff, books, copies and loans, with SQL queries that check borrowing eligibility and available copies.",
+      "tags": [
+        "MySQL",
+        "SQL",
+        "ERD"
+      ],
+      "categories": [
+        "Data engineering"
+      ],
       "featured": true
     },
     {
