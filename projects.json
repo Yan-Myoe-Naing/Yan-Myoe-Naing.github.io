@@ -68,6 +68,25 @@
   ],
   "projects": [
     {
+      "title": "Q AI — Trusted AI Answer Checker",
+      "repo": "",
+      "link": "q-ai.html",
+      "link_label": "View case study",
+      "summary": "Team Quadrant's OCBC Ignite prototype checks a simulated bank assistant against synthetic procedures and sends unsafe or uncertain answers to human review. I built the interface redesign, follow-up handling and second-opinion checks.",
+      "tags": [
+        "Agentic AI",
+        "React",
+        "FastAPI",
+        "Team project"
+      ],
+      "categories": [
+        "Agentic AI",
+        "Web app"
+      ],
+      "year": "2026",
+      "featured": true
+    },
+    {
       "title": "CLARITY — Agentic AI Insurance Navigator",
       "repo": "",
       "link": "https://github.com/William35-f/Clarity-Agentic-AI-insurance-navigator",

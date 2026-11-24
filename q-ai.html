@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Q AI, a Team Quadrant prototype that checks AI answers against current synthetic bank procedures." />
+  <title>Q AI — Yan Myoe Naing</title>
+  <link rel="stylesheet" href="styles.css?v=6" />
+  <link rel="stylesheet" href="q-ai.css?v=1" />
+</head>
+<body class="case-study">
+  <header class="case-header">
+    <a class="case-header__back" href="index.html#projects">Back to portfolio</a>
+    <span class="case-header__name">Yan Myoe Naing</span>
+  </header>
+
+  <main>
+    <section class="case-hero" aria-labelledby="case-title">
+      <p class="case-eyebrow">Team Quadrant / OCBC Ignite / 2026</p>
+      <h1 id="case-title">Q AI</h1>
+      <p class="case-hero__lead">A checking layer for answers from an AI assistant.</p>
+      <p class="case-hero__intro">A confident answer can still quote an old procedure or miss a required check. Our prototype gives staff a clear verdict, shows the evidence, and brings a person in when the answer cannot be cleared.</p>
+      <div class="case-meta" aria-label="Project details">
+        <span>Trusted AI Agents</span>
+        <span>Team project</span>
+        <span>Working prototype</span>
+      </div>
+    </section>
+
+    <section class="case-section case-section--dark" aria-labelledby="case-problem">
+      <p class="case-index">01 / The problem</p>
+      <div>
+        <h2 id="case-problem">The answer sounded right.</h2>
+        <p>In the demo, a simulated bank assistant gives an overseas transfer limit from an outdated procedure. It also leaves out a scam-risk check for a first-time payee. Both errors matter before an employee acts on the answer.</p>
+      </div>
+    </section>
+
+    <section class="case-section" aria-labelledby="case-approach">
+      <p class="case-index">02 / The approach</p>
+      <div>
+        <h2 id="case-approach">Check before and after the answer.</h2>
+        <ol class="case-steps">
+          <li><strong>Clarify the question.</strong> Q AI asks for missing details and stops unsafe requests before the assistant responds.</li>
+          <li><strong>Check the answer.</strong> Rules and AI checks compare claims, citations and question coverage with current synthetic procedures. Higher-risk answers get a second opinion.</li>
+          <li><strong>Make the decision visible.</strong> Staff see Verified, Unconfirmed or Conflicts with policy, along with reasons. Unresolved answers go to a human reviewer.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="case-section case-section--blue" aria-labelledby="case-contribution">
+      <p class="case-index">03 / My contribution</p>
+      <div>
+        <h2 id="case-contribution">What I built with the team.</h2>
+        <p>I redesigned the interface around the verdict and its evidence, built contextual follow-up handling, and worked on the second-opinion checks for higher-risk answers.</p>
+        <div class="case-tags" aria-label="Technology"><span>React</span><span>TypeScript</span><span>FastAPI</span><span>Python</span><span>Gemini</span></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="case-footer">
+    <p>Prototype for OCBC Ignite. Synthetic data only. Not an OCBC product. The assistant shown in the demo is simulated.</p>
+    <p>The team repository is private.</p>
+    <a href="index.html#projects">Back to projects</a>
+  </footer>
+</body>
+</html>

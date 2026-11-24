@@ -92,6 +92,7 @@ function buildProjectList(config, repos) {
       tags: p.tags?.length ? p.tags : [repo?.language].filter(Boolean),
       year: p.year || (repo ? new Date(repo.created_at).getFullYear() : ""),
       url: p.link || repo?.html_url || (p.repo ? `https://github.com/${user}/${p.repo}` : `https://github.com/${user}`),
+      linkLabel: p.link_label || "View on GitHub",
       demo: p.demo || repo?.homepage || "",
       featured: Boolean(p.featured),
       categories: p.categories || [],
@@ -109,6 +110,7 @@ function buildProjectList(config, repos) {
       tags: [r.language, ...(r.topics || [])].filter(Boolean).slice(0, 4),
       year: new Date(r.created_at).getFullYear(),
       url: r.html_url,
+      linkLabel: "View on GitHub",
       demo: r.homepage || "",
       featured: false,
       categories: [],
@@ -149,9 +151,9 @@ function renderFeatured(projects, user) {
       </div>
       <div class="post__actions">
         <button class="like-btn" aria-label="Like ${esc(p.title)}" aria-pressed="false">${ICONS.heart}</button>
-        <a href="${esc(p.url)}" target="_blank" rel="noopener" aria-label="View code for ${esc(p.title)}">${ICONS.code}</a>
+        <a href="${esc(p.url)}" target="_blank" rel="noopener" aria-label="Open ${esc(p.title)}">${ICONS.code}</a>
         ${p.demo ? `<a href="${esc(p.demo)}" target="_blank" rel="noopener" aria-label="Open demo of ${esc(p.title)}">${ICONS.send}</a>` : ""}
-        <a class="post__link push" href="${esc(p.url)}" target="_blank" rel="noopener">View on GitHub</a>
+        <a class="post__link push" href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.linkLabel)}</a>
       </div>
     </article>`).join("");
 
