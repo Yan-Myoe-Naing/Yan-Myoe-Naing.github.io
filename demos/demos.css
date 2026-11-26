@@ -51,11 +51,30 @@
 }
 .peek-canvas { width: 100%; height: 100%; }
 .peek-tag { position: absolute; right: 14px; top: 8px; font-size: .8rem; color: var(--orange); font-weight: 700; }
-.peek-pipe { position: relative; width: 86%; height: 60%; display: flex; justify-content: space-between; align-items: center; }
-.peek-pipe__stage { position: relative; z-index: 2; font: 700 .72rem var(--font-mono); padding: 8px 10px; border-radius: 10px; background: var(--c); color: var(--ink); }
-.peek-pipe__track { position: absolute; inset: 0; }
-.peek-dot { position: absolute; left: 0; top: 50%; width: 9px; height: 9px; margin: -4px 0 0 -4px; border-radius: 50%; background: var(--blue); opacity: 0; }
-.peek-dot.is-bad { background: var(--red); }
+.peek-pipe { position: relative; width: 94%; height: 60%; display: grid; grid-template-columns: repeat(3, 1fr); place-items: center; }
+.peek-pipe__stage { z-index: 1; font: 700 .72rem var(--font-mono); padding: 8px 10px; border-radius: 10px; background: var(--c); color: var(--ink); }
+.peek-pipe__track { position: absolute; inset: 0; width: 100%; height: 100%; }
+.peek-pipe__line, .peek-pipe__branch { fill: none; stroke: currentColor; stroke-width: 1.5; opacity: .35; }
+.peek-pipe__branch { stroke-dasharray: 3 4; }
+.peek-pipe__dot, .peek-pipe__reject { opacity: 0; }
+.peek-pipe__dot { fill: currentColor; }
+.peek-pipe__reject { fill: var(--red); }
+@media (prefers-reduced-motion: no-preference) {
+  .peek-pipe__dot { animation: pipeline-flow 2.6s linear var(--delay) infinite; }
+  .peek-pipe__reject { animation: pipeline-reject 4.6s linear infinite; }
+}
+@keyframes pipeline-flow {
+  0% { transform: translateX(0); opacity: 0; }
+  8%, 92% { opacity: 1; }
+  100% { transform: translateX(200px); opacity: 0; }
+}
+@keyframes pipeline-reject {
+  0% { transform: translate(0, 0); opacity: 0; }
+  4%, 27%, 43%, 51% { opacity: 1; }
+  27% { transform: translate(100px, 0); }
+  43%, 100% { transform: translate(100px, 45px); }
+  62%, 100% { opacity: 0; }
+}
 .peek-city { position: relative; width: 82%; height: 62%; display: flex; flex-direction: column; justify-content: flex-end; }
 .peek-city__row { display: flex; align-items: flex-end; gap: 6px; height: 100%; border-bottom: 2px solid currentColor; }
 .peek-city__row i { flex: 1; background: var(--blue); border-radius: 4px 4px 0 0; transform-origin: bottom; }

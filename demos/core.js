@@ -6,7 +6,7 @@
      downloaded when a preview or demo needs them.
    ========================================================= */
 (function () {
-  const VERSION = "12";
+  const VERSION = "13";
   const BASE = "demos/";
   const COLORS = {
     blue: "#7db6ec", deep: "#3d8fdc", pale: "#d9eafb", ink: "#141419", ink2: "#1f1f27",
@@ -241,22 +241,16 @@
   // Data-lake peek: dots flow Bronze → Silver → Gold, one goes to quarantine
   function pipelinePeek(el) {
     el.innerHTML = `<div class="peek-pipe">
+      <svg class="peek-pipe__track" viewBox="0 0 300 120" preserveAspectRatio="none" aria-hidden="true">
+        <path class="peek-pipe__line" d="M50 60H250"/>
+        <path class="peek-pipe__branch" d="M150 60V105"/>
+        ${Array.from({ length: 5 }, (_, index) => `<circle class="peek-pipe__dot" cx="50" cy="60" r="3.5" style="--delay:${index * -0.52}s"/>`).join("")}
+        <circle class="peek-pipe__reject" cx="50" cy="60" r="3.5"/>
+      </svg>
       <span class="peek-pipe__stage" style="--c:#c98a5a">Bronze</span>
       <span class="peek-pipe__stage" style="--c:#b9c0cc">Silver</span>
       <span class="peek-pipe__stage" style="--c:#e8c14f">Gold</span>
-      <div class="peek-pipe__track"></div></div>`;
-    const track = el.querySelector(".peek-pipe__track");
-    for (let k = 0; k < 9; k++) { const d = document.createElement("i"); d.className = "peek-dot" + (k === 4 ? " is-bad" : ""); track.appendChild(d); }
-    let anim = null;
-    getAnime().then((A) => {
-      if (reduceMotion) return;
-      const good = track.querySelectorAll(".peek-dot:not(.is-bad)");
-      anim = [
-        A.animate(good, { left: ["0%", "100%"], opacity: [{ to: 1, duration: 200 }, { to: 1, duration: 1800 }, { to: 0, duration: 300 }], delay: A.stagger(260), duration: 2300, loop: true, ease: "inOut(2)" }),
-        A.animate(track.querySelector(".is-bad"), { left: ["0%", "48%"], top: ["50%", "95%"], opacity: [{ to: 1, duration: 200 }, { to: 1, duration: 1300 }, { to: 0, duration: 300 }], delay: 1000, duration: 1800, loop: true, loopDelay: 700, ease: "inOut(2)" }),
-      ];
-    }).catch(() => {});
-    return { dispose() { anim && anim.forEach((a) => a.pause()); } };
+    </div>`;
   }
 
   // Wellness game peek: a little city grows block by block
