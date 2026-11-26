@@ -36,6 +36,19 @@
 .post__art--blue .post__try:hover { background: var(--orange); }
 
 /* preview animations */
+.peek-pendulum { display: block; width: 100%; height: 100%; min-height: 0; }
+.peek-pendulum__arm { transform-origin: 150px 80px; transform: rotate(34deg); }
+@media (prefers-reduced-motion: no-preference) {
+  .peek-pendulum__arm { animation: pendulum-swing 3.2s ease-in-out 3; }
+}
+@keyframes pendulum-swing {
+  0% { transform: rotate(34deg); }
+  24% { transform: rotate(154deg); }
+  46% { transform: rotate(241deg); }
+  70% { transform: rotate(355deg); }
+  82% { transform: rotate(368deg); }
+  100% { transform: rotate(394deg); }
+}
 .peek-canvas { width: 100%; height: 100%; }
 .peek-tag { position: absolute; right: 14px; top: 8px; font-size: .8rem; color: var(--orange); font-weight: 700; }
 .peek-pipe { position: relative; width: 86%; height: 60%; display: flex; justify-content: space-between; align-items: center; }

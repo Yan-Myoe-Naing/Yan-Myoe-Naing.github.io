@@ -6,7 +6,7 @@
      downloaded when a preview or demo needs them.
    ========================================================= */
 (function () {
-  const VERSION = "9";
+  const VERSION = "10";
   const BASE = "demos/";
   const COLORS = {
     blue: "#7db6ec", deep: "#3d8fdc", pale: "#d9eafb", ink: "#141419", ink2: "#1f1f27",
@@ -164,12 +164,26 @@
       }, null, true);
     } },
     "emnist": { kind: "anim", build: (el) => letterPeek(el) },
+    "pendulum-dqn": { kind: "anim", build: (el) => pendulumPeek(el) },
     "library-pipeline": { kind: "anim", build: (el) => pipelinePeek(el) },
     "library-database": { kind: "image", src: "demos/img/library-erd.webp", alt: "Entity-relationship diagram of the library database" },
     "wellness-game": { kind: "anim", build: (el) => cityPeek(el) },
     "clarity": { kind: "anim", build: (el) => agentsPeek(el) },
     "q-ai": { kind: "anim", build: (el) => verdictPeek(el) },
   };
+
+  function pendulumPeek(el) {
+    el.innerHTML = `<svg class="peek-pendulum" viewBox="0 0 300 160" aria-hidden="true">
+      <circle cx="150" cy="80" r="58" fill="none" stroke="currentColor" opacity=".28" stroke-dasharray="3 5"/>
+      <path d="M150 80V22M150 80H220M150 80H80" fill="none" stroke="currentColor" opacity=".28" stroke-dasharray="3 5"/>
+      <circle cx="150" cy="22" r="7" fill="none" stroke="currentColor" opacity=".7"/>
+      <g class="peek-pendulum__arm">
+        <path d="M150 80V22" stroke="var(--orange)" stroke-width="5" stroke-linecap="round"/>
+        <circle cx="150" cy="22" r="8" fill="var(--orange)"/>
+      </g>
+      <circle cx="150" cy="80" r="5" fill="currentColor"/>
+    </svg>`;
+  }
 
   // EMNIST peek: letters appear as 28x28 pixel grids, with a prediction tag
   function letterPeek(el) {

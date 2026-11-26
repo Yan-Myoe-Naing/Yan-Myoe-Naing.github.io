@@ -29,11 +29,13 @@
   },
   "skills": [
     {
-      "group": "Languages",
+      "group": "Web development",
       "items": [
-        "Python",
-        "SQL",
-        "HTML / CSS"
+        "JavaScript / TypeScript",
+        "React",
+        "HTML / CSS",
+        "FastAPI",
+        "Node.js / Express"
       ]
     },
     {
@@ -42,22 +44,26 @@
         "Regression",
         "Classification",
         "Clustering & PCA",
-        "Time-series forecasting"
+        "Time-series forecasting",
+        "Reinforcement learning (DQN)"
       ]
     },
     {
-      "group": "Deep learning",
+      "group": "Deep learning & AI",
       "items": [
         "CNNs",
         "RNNs",
         "GANs / VAEs",
-        "Transformers"
+        "Transformers",
+        "TensorFlow / Keras",
+        "Agentic AI"
       ]
     },
     {
       "group": "Data & tools",
       "items": [
-        "Pandas",
+        "Python / pandas",
+        "SQL",
         "MySQL",
         "DuckDB",
         "Tableau",
@@ -88,7 +94,7 @@
         "Agentic AI",
         "React",
         "FastAPI",
-        "Team project"
+        "Policy validation"
       ],
       "categories": [
         "Agentic AI",
@@ -108,7 +114,7 @@
         "Agentic AI",
         "OpenAI",
         "React",
-        "Team project"
+        "Multi-agent workflows"
       ],
       "categories": [
         "Agentic AI",
