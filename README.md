@@ -46,6 +46,33 @@ To hide a repo, add its name to `settings.hide_repos`.
 In `index.html`, bump the number in `styles.css?v=4` / `app.js?v=4` (e.g. to `v=5`).
 This makes visitors' browsers download the new file instead of using an old cached copy.
 
+## Card previews and interactive demos
+
+Each project card shows a live preview, and its **Try it ▶** button opens an interactive demo in a pop-up.
+Link straight to one with `#demo-<slug>`, for example `index.html#demo-emnist`.
+
+| Folder / file | What it does |
+|---|---|
+| `demos/core.js` | Card previews, the demo pop-up, lazy loading, shared chart style |
+| `demos/<slug>.js` | One file per demo (only downloaded when that demo is opened) |
+| `demos/demos.css` | Styles for previews, pop-up and demo widgets |
+| `demos/data/` | Small JSON files made from each project's notebook or repo, plus the EMNIST model weights |
+| `demos/img/` | ERD and workflow images used as previews |
+| `vendor/` | Self-hosted [ECharts](https://echarts.apache.org/) 6.1 (Apache-2.0, slim custom build) and [anime.js](https://animejs.com/) 4.5 (MIT) |
+
+To connect a project to a demo, give it a `"slug"` in `projects.json` that matches a demo file
+(e.g. `"slug": "house-price"` → `demos/house-price.js`). A project with no slug, or no preview for its slug,
+keeps the big-letter card.
+
+How the demo data was made:
+
+- **House Price**: the notebook's final Ridge model (α = 10) rebuilt exactly; same MAE and R².
+- **Machine Failure**: a smaller gradient boosting model (250 trees, depth 5) trained the same way so it can run in the browser. Test F1 0.90 vs 0.94 for the notebook's model.
+- **Handwritten Letters**: the notebook's final CNN architecture, retrained on synthetic handwriting from 63 fonts, because the original weights aren't in the repo. Runs fully in the browser.
+- **Customer Clustering, Energy, Job Market, Graduate Outcomes**: data recomputed by re-running each notebook's own steps.
+- **Library pipeline, Q AI**: numbers taken from the repos' validation reports and evaluation results.
+- **Library database, Wellness game, CLARITY**: rules and steps taken from the project code (SQL queries, Express middleware, AI prompts).
+
 ## Run it locally
 
 `fetch()` doesn't work when you open the file directly from disk, so start a tiny server first:

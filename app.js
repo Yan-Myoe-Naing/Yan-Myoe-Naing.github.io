@@ -88,6 +88,8 @@ function buildProjectList(config, repos) {
     if (repo) usedRepos.add(repo.name);
     return {
       title: p.title,
+      slug: p.slug || "",            // links the card to its preview + demo in demos/
+      page: p.page || "",            // optional case-study page
       summary: p.summary || repo?.description || "",
       tags: p.tags?.length ? p.tags : [repo?.language].filter(Boolean),
       year: p.year || (repo ? new Date(repo.created_at).getFullYear() : ""),
@@ -128,6 +130,9 @@ const ICONS = {
 };
 const ART_STYLES = ["dark", "blue", "mid"];
 
+// A card shows a live preview when demos/core.js has one for its slug
+const hasPeek = (p) => Boolean(p.slug && window.Demos && window.Demos.hasPreview(p.slug));
+
 function renderFeatured(projects, user) {
   // Every project gets a card; featured ones go first
   const featured = [...projects.filter((p) => p.featured), ...projects.filter((p) => !p.featured)];
@@ -140,10 +145,13 @@ function renderFeatured(projects, user) {
         <span class="post__handle">${esc(handle)}</span>
         <span class="post__dots">•••</span>
       </div>
-      <div class="post__art post__art--${ART_STYLES[i % ART_STYLES.length]}">
-        <span class="post__glyph" aria-hidden="true">${esc(initials(p.title))}</span>
+      <div class="post__art post__art--${ART_STYLES[i % ART_STYLES.length]}${hasPeek(p) ? " has-peek" : ""}">
+        ${hasPeek(p)
+          ? `<div class="post__peek" data-preview="${esc(p.slug)}" aria-hidden="true"></div>`
+          : `<span class="post__glyph" aria-hidden="true">${esc(initials(p.title))}</span>`}
         <div class="post__meta"><span>${String(i + 1).padStart(2, "0")} / Project</span><span>${esc(p.year)}</span></div>
         <h3 class="post__title">${esc(p.title)}</h3>
+        ${p.slug && window.Demos ? `<button type="button" class="post__try" data-demo="${esc(p.slug)}">Try it <span aria-hidden="true">▶</span><span class="sr-only"> — interactive demo of ${esc(p.title)}</span></button>` : ""}
       </div>
       <div class="post__body">
         <p>${esc(p.summary)}</p>
@@ -153,7 +161,8 @@ function renderFeatured(projects, user) {
         <button class="like-btn" aria-label="Like ${esc(p.title)}" aria-pressed="false">${ICONS.heart}</button>
         <a href="${esc(p.url)}" target="_blank" rel="noopener" aria-label="Open ${esc(p.title)}">${ICONS.code}</a>
         ${p.demo ? `<a href="${esc(p.demo)}" target="_blank" rel="noopener" aria-label="Open demo of ${esc(p.title)}">${ICONS.send}</a>` : ""}
-        <a class="post__link push" href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.linkLabel)}</a>
+        ${p.page ? `<a class="post__link push" href="${esc(p.page)}">Case study</a>` : ""}
+        <a class="post__link ${p.page ? "" : "push"}" href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.linkLabel)}</a>
       </div>
     </article>`).join("");
 
@@ -680,6 +689,7 @@ async function init() {
   renderFilters(projects, settings.filter_categories);
   renderWorkList(projects, "");
   observeReveals();
+  if (window.Demos) window.Demos.attach(projects);   // previews + "Try it" demos
 }
 
 init();
