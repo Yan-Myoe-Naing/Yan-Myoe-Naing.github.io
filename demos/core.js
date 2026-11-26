@@ -6,7 +6,7 @@
      downloaded when a preview or demo needs them.
    ========================================================= */
 (function () {
-  const VERSION = "11";
+  const VERSION = "12";
   const BASE = "demos/";
   const COLORS = {
     blue: "#7db6ec", deep: "#3d8fdc", pale: "#d9eafb", ink: "#141419", ink2: "#1f1f27",
@@ -374,7 +374,8 @@
     dialog.querySelector("#demoTitle").textContent = project.title;
     dialog.querySelector("#demoEyebrow").textContent = "Interactive demo · " + (project.tags || []).slice(0, 3).join(" · ");
     const linkText = project.linkLabel === "View case study" ? "View case study" : "View code";
-    const links = [`<a href="${esc(project.url)}" target="_blank" rel="noopener">${linkText} ↗</a>`];
+    const linkTarget = linkText === "View case study" ? "" : ' target="_blank" rel="noopener"';
+    const links = [`<a href="${esc(project.url)}"${linkTarget}>${linkText} →</a>`];
     if (project.page) links.unshift(`<a href="${esc(project.page)}">Case study →</a>`);
     dialog.querySelector("#demoLinks").innerHTML = links.join("");
     const body = dialog.querySelector("#demoBody");
@@ -405,7 +406,7 @@
       await def.mount(body, api);
     } catch (err) {
       console.error(err);
-      body.innerHTML = `<p class="demo-error">This demo couldn't load. Check your connection and try again, or <a href="${esc(project.url)}" target="_blank" rel="noopener">${linkText.toLowerCase()}</a>.</p>`;
+      body.innerHTML = `<p class="demo-error">This demo couldn't load. Check your connection and try again, or <a href="${esc(project.url)}"${linkTarget}>${linkText.toLowerCase()}</a>.</p>`;
     }
   }
 

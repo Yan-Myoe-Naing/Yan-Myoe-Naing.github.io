@@ -6,11 +6,12 @@
   <meta name="description" content="A Power BI case study on choosing a Singapore MRT area for a location-based game pilot.">
   <title>Catch &amp; Go Pilot Location Analysis — Yan Myoe Naing</title>
   <link rel="stylesheet" href="styles.css?v=8">
-  <link rel="stylesheet" href="q-ai.css?v=2">
+  <link rel="stylesheet" href="q-ai.css?v=3">
+  <script src="case-links.js" defer></script>
 </head>
 <body class="case-study">
   <header class="case-header">
-    <a class="case-header__back" href="index.html#projects">Back to portfolio</a>
+    <a class="case-header__back" data-case-back href="index.html#project-catch-and-go">← Back to portfolio</a>
     <span class="case-header__name">Yan Myoe Naing</span>
   </header>
   <main>
@@ -19,26 +20,59 @@
       <h1 class="case-title--long" id="case-title">Catch &amp; Go</h1>
       <p class="case-hero__lead">Where should a location-based game run its first pilot?</p>
       <p class="case-hero__intro">Our team analysed a sample of 200 Singapore residents for a fictional game launch. We compared MRT areas on gaming intensity, income readiness, gaming motivation, transit accessibility, and age fit.</p>
-      <p class="case-hero__intro"><a href="index.html#demo-catch-and-go">Explore the interactive results</a></p>
+      <nav class="case-jump" aria-label="On this page">
+        <a href="#case-evidence">View my chart</a>
+        <a href="#case-method">Methods &amp; tools</a>
+        <a href="#case-result">Recommendation</a>
+      </nav>
     </section>
-    <section class="case-section case-section--blue" aria-labelledby="case-role">
-      <p class="case-index">My contribution</p>
+    <section class="case-section case-section--blue" aria-labelledby="case-evidence">
+      <p class="case-index">Rising Insight 3</p>
       <div>
-        <h2 id="case-role">From player motivations to a pilot recommendation</h2>
-        <p>I built the Power BI visuals and analysis for Rising Insight 3, which ranked MRT areas by frequent gamers who played for well-being-related reasons. I also built the introduction, setting, hook, final synthesis, solution and next steps, and references pages. My teammates led Rising Insights 1, 2, 4, and 5.</p>
+        <h2 id="case-evidence">Where do motivated players already live?</h2>
+        <p>Of the 62 residents who played at least seven hours a week, 30 named a well-being-related reason for gaming (48%). Hougang was one of three MRT areas tied for the highest count on this measure.</p>
+        <figure class="case-figure">
+          <figcaption id="catch-chart-title">Frequent gamers who play for well-being</figcaption>
+          <table class="case-chart" aria-labelledby="catch-chart-title">
+            <thead><tr><th scope="col">Nearest MRT</th><th scope="col">Matching residents</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Choa Chu Kang</th><td><span class="case-bar" aria-hidden="true" style="--bar:1"></span><strong>3</strong></td></tr>
+              <tr class="case-chart__focus"><th scope="row">Hougang</th><td><span class="case-bar" aria-hidden="true" style="--bar:1"></span><strong>3</strong></td></tr>
+              <tr><th scope="row">Sengkang</th><td><span class="case-bar" aria-hidden="true" style="--bar:1"></span><strong>3</strong></td></tr>
+              <tr><th scope="row">Bedok</th><td><span class="case-bar" aria-hidden="true" style="--bar:.6667"></span><strong>2</strong></td></tr>
+              <tr><th scope="row">Lakeside</th><td><span class="case-bar" aria-hidden="true" style="--bar:.6667"></span><strong>2</strong></td></tr>
+              <tr><th scope="row">Paya Lebar</th><td><span class="case-bar" aria-hidden="true" style="--bar:.6667"></span><strong>2</strong></td></tr>
+            </tbody>
+          </table>
+          <p>Recreated from my Power BI chart using the six MRT areas featured in the report.</p>
+        </figure>
+        <p><a href="index.html#demo-catch-and-go">Explore the interactive chart →</a></p>
       </div>
     </section>
-    <section class="case-section" aria-labelledby="case-result">
+    <section class="case-section" aria-labelledby="case-method">
+      <p class="case-index">Methods &amp; tools</p>
+      <div>
+        <h2 id="case-method">How I narrowed the sample</h2>
+        <ol class="case-steps">
+          <li><strong>Filter the audience in Power BI.</strong> I used the survey’s seven-or-more-hours gaming bands and selected three motivations: relieving stress, immersing in another world, and feeling accomplished.</li>
+          <li><strong>Measure and compare.</strong> I used a DAX measure to show how many frequent gamers met the motivation criteria as a percentage. I grouped matching residents by nearest MRT and built a column chart to compare the counts.</li>
+          <li><strong>Check the geographic spread.</strong> I used Azure Maps in Power BI to check whether those MRT areas formed a cluster. The leading areas were spread across western, north-eastern, and eastern Singapore.</li>
+        </ol>
+        <p class="case-credit">I built Rising Insight 3 and the report’s introduction, setting, hook, synthesis, solution and next steps, and references. My teammates led Rising Insights 1, 2, 4, and 5.</p>
+      </div>
+    </section>
+    <section class="case-section case-section--dark" aria-labelledby="case-result">
       <p class="case-index">Findings</p>
       <div>
         <h2 id="case-result">Start in Hougang</h2>
-        <p>Hougang, Choa Chu Kang, and Sengkang tied for first on the motivation measure, with three matching residents each. Across all five criteria, our team recommended Hougang for the initial pilot and Yishun for a possible expansion. We proposed tracking encounters, repeat visits, battle activity, and player feedback before expanding.</p>
+        <p>The tie made motivation useful for shortlisting. I brought that result together with the team’s findings on gaming intensity, income, transit access, and age. Hougang performed consistently across the criteria, so we recommended starting around its MRT-linked public spaces.</p>
+        <p class="case-credit">We proposed tracking encounters, repeat visits, battle activity, and player feedback before deciding whether to expand to Yishun.</p>
       </div>
     </section>
   </main>
   <footer class="case-footer">
     <p>The findings describe the survey sample of 200 residents.</p>
-    <a href="index.html#projects">Back to projects</a>
+    <a data-case-back href="index.html#project-catch-and-go">Back to Catch &amp; Go</a>
   </footer>
 </body>
 </html>

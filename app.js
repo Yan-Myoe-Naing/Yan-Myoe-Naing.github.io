@@ -132,6 +132,7 @@ const ART_STYLES = ["dark", "blue", "mid"];
 
 // A card shows a live preview when demos/core.js has one for its slug
 const hasPeek = (p) => Boolean(p.slug && window.Demos && window.Demos.hasPreview(p.slug));
+const casePage = (p) => p.page || (p.linkLabel === "View case study" ? p.url : "");
 
 function renderFeatured(projects, user) {
   // Every project gets a card; featured ones go first
@@ -139,7 +140,7 @@ function renderFeatured(projects, user) {
   const handle = user.replace(/-/g, "_");
 
   $("#featured").innerHTML = featured.map((p, i) => `
-    <article class="post reveal">
+    <article class="post reveal"${p.slug ? ` id="project-${esc(p.slug)}"` : ""}>
       <div class="post__head">
         <span class="avatar">ymn</span>
         <span class="post__handle">${esc(handle)}</span>
@@ -159,10 +160,10 @@ function renderFeatured(projects, user) {
       </div>
       <div class="post__actions">
         <button class="like-btn" aria-label="Like ${esc(p.title)}" aria-pressed="false">${ICONS.heart}</button>
-        <a href="${esc(p.url)}" target="_blank" rel="noopener" aria-label="Open ${esc(p.title)}">${ICONS.code}</a>
+        ${p.linkLabel === "View case study" ? "" : `<a href="${esc(p.url)}" target="_blank" rel="noopener" aria-label="View code for ${esc(p.title)}">${ICONS.code}</a>`}
         ${p.demo ? `<a href="${esc(p.demo)}" target="_blank" rel="noopener" aria-label="Open demo of ${esc(p.title)}">${ICONS.send}</a>` : ""}
         ${p.page ? `<a class="post__link push" href="${esc(p.page)}">Case study</a>` : ""}
-        <a class="post__link ${p.page ? "" : "push"}" href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.linkLabel)}</a>
+        <a class="post__link ${p.page ? "" : "push"}" href="${esc(p.url)}"${p.linkLabel === "View case study" ? "" : ' target="_blank" rel="noopener"'}>${esc(p.linkLabel)}</a>
       </div>
     </article>`).join("");
 
@@ -181,8 +182,8 @@ function renderWorkList(projects, activeTag) {
     : projects;
   $("#workList").innerHTML = shown.length
     ? shown.map((p, i) => `
-      <li class="work-row reveal">
-        <a href="${esc(p.url)}" target="_blank" rel="noopener">
+      <li class="work-row reveal"${p.slug ? ` id="work-${esc(p.slug)}"` : ""}>
+        <a href="${esc(casePage(p) ? casePage(p) + "?from=work" : p.url)}"${casePage(p) ? "" : ' target="_blank" rel="noopener"'}>
           <span class="work-row__num">${String(i + 1).padStart(2, "0")}</span>
           <span>
             <span class="work-row__title">${esc(p.title)}</span>
@@ -690,6 +691,11 @@ async function init() {
   renderWorkList(projects, "");
   observeReveals();
   if (window.Demos) window.Demos.attach(projects);   // previews + "Try it" demos
+  if (/^#(?:project|work)-[\w-]+$/.test(location.hash)) {
+    document.getElementById(location.hash.slice(1))?.scrollIntoView({
+      block: "center", inline: "center", behavior: "instant",
+    });
+  }
 }
 
 init();
