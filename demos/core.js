@@ -6,7 +6,7 @@
      downloaded when a preview or demo needs them.
    ========================================================= */
 (function () {
-  const VERSION = "10";
+  const VERSION = "11";
   const BASE = "demos/";
   const COLORS = {
     blue: "#7db6ec", deep: "#3d8fdc", pale: "#d9eafb", ink: "#141419", ink2: "#1f1f27",
@@ -165,6 +165,7 @@
     } },
     "emnist": { kind: "anim", build: (el) => letterPeek(el) },
     "pendulum-dqn": { kind: "anim", build: (el) => pendulumPeek(el) },
+    "catch-and-go": { kind: "anim", build: (el) => catchAndGoPeek(el) },
     "library-pipeline": { kind: "anim", build: (el) => pipelinePeek(el) },
     "library-database": { kind: "image", src: "demos/img/library-erd.webp", alt: "Entity-relationship diagram of the library database" },
     "wellness-game": { kind: "anim", build: (el) => cityPeek(el) },
@@ -173,7 +174,7 @@
   };
 
   function pendulumPeek(el) {
-    el.innerHTML = `<svg class="peek-pendulum" viewBox="0 0 300 160" aria-hidden="true">
+    el.innerHTML = `<svg class="peek-schematic" viewBox="0 0 300 160" aria-hidden="true">
       <circle cx="150" cy="80" r="58" fill="none" stroke="currentColor" opacity=".28" stroke-dasharray="3 5"/>
       <path d="M150 80V22M150 80H220M150 80H80" fill="none" stroke="currentColor" opacity=".28" stroke-dasharray="3 5"/>
       <circle cx="150" cy="22" r="7" fill="none" stroke="currentColor" opacity=".7"/>
@@ -182,6 +183,22 @@
         <circle cx="150" cy="22" r="8" fill="var(--orange)"/>
       </g>
       <circle cx="150" cy="80" r="5" fill="currentColor"/>
+    </svg>`;
+  }
+
+  function catchAndGoPeek(el) {
+    el.innerHTML = `<svg class="peek-schematic" viewBox="0 0 300 160" aria-hidden="true">
+      <path d="M38 108H90L131 65H251M90 108L151 124H252M131 65L163 34H220"
+        fill="none" stroke="currentColor" opacity=".4" stroke-width="3" stroke-linecap="round"/>
+      <g fill="currentColor">
+        <circle cx="38" cy="108" r="4"/><circle cx="90" cy="108" r="4"/>
+        <circle cx="131" cy="65" r="4"/><circle cx="163" cy="34" r="4"/>
+        <circle cx="220" cy="34" r="4"/><circle cx="251" cy="65" r="4"/>
+        <circle cx="151" cy="124" r="4"/><circle cx="252" cy="124" r="4"/>
+      </g>
+      <circle cx="190" cy="65" r="16" fill="none" stroke="var(--orange)" stroke-width="2" opacity=".55"/>
+      <circle cx="190" cy="65" r="7" fill="var(--orange)"/>
+      <text x="190" y="98" fill="currentColor" text-anchor="middle" class="mono" font-size="12">Hougang</text>
     </svg>`;
   }
 
@@ -356,7 +373,8 @@
     const slug = project.slug;
     dialog.querySelector("#demoTitle").textContent = project.title;
     dialog.querySelector("#demoEyebrow").textContent = "Interactive demo · " + (project.tags || []).slice(0, 3).join(" · ");
-    const links = [`<a href="${esc(project.url)}" target="_blank" rel="noopener">View code ↗</a>`];
+    const linkText = project.linkLabel === "View case study" ? "View case study" : "View code";
+    const links = [`<a href="${esc(project.url)}" target="_blank" rel="noopener">${linkText} ↗</a>`];
     if (project.page) links.unshift(`<a href="${esc(project.page)}">Case study →</a>`);
     dialog.querySelector("#demoLinks").innerHTML = links.join("");
     const body = dialog.querySelector("#demoBody");
@@ -387,7 +405,7 @@
       await def.mount(body, api);
     } catch (err) {
       console.error(err);
-      body.innerHTML = `<p class="demo-error">This demo couldn't load. Check your connection and try again, or <a href="${esc(project.url)}" target="_blank" rel="noopener">see the code on GitHub</a>.</p>`;
+      body.innerHTML = `<p class="demo-error">This demo couldn't load. Check your connection and try again, or <a href="${esc(project.url)}" target="_blank" rel="noopener">${linkText.toLowerCase()}</a>.</p>`;
     }
   }
 

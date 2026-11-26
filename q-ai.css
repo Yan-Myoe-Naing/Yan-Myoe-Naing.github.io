@@ -6,6 +6,7 @@
 .case-hero { padding: clamp(70px, 10vw, 150px) clamp(20px, 8vw, 120px) clamp(65px, 8vw, 110px); max-width: 1300px; margin: 0 auto; }
 .case-eyebrow, .case-index { color: #286fb5; font-size: .78rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
 .case-hero h1 { font-size: clamp(5.5rem, 18vw, 16rem); line-height: .85; letter-spacing: -.08em; margin: 28px 0 36px; }
+.case-hero .case-title--long { font-size: clamp(3rem, 11vw, 9rem); line-height: .95; }
 .case-hero__lead { font-size: clamp(1.8rem, 4vw, 3.5rem); font-weight: 700; line-height: 1.08; letter-spacing: -.035em; max-width: 850px; }
 .case-hero__intro { font-size: clamp(1.05rem, 1.5vw, 1.3rem); line-height: 1.6; max-width: 720px; margin-top: 32px; color: #3a3a44; }
 .case-meta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 40px; }

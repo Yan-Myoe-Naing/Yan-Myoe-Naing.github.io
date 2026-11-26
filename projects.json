@@ -75,6 +75,17 @@
   ],
   "projects": [
     {
+      "title": "Catch & Go Pilot Location Analysis",
+      "slug": "catch-and-go",
+      "link": "catch-and-go.html",
+      "link_label": "View case study",
+      "summary": "I built the Power BI analysis of frequent gamers who play for well-being and wrote the synthesis and rollout recommendation. Our team recommended piloting the game in Hougang, then expanding to Yishun if the pilot succeeds.",
+      "tags": ["Power BI", "Geospatial analysis", "Data storytelling"],
+      "categories": ["Data analysis"],
+      "year": "2026",
+      "featured": true
+    },
+    {
       "title": "Pendulum Control with Deep Q-Learning",
       "slug": "pendulum-dqn",
       "link": "https://github.com/Yan-Myoe-Naing/Yan-Myoe-Naing.github.io/blob/main/demos/pendulum-dqn.js",
