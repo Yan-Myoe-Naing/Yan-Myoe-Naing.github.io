@@ -73,6 +73,14 @@ How the demo data was made:
 - **Library pipeline, Q AI**: numbers taken from the repos' validation reports and evaluation results.
 - **Library database, Wellness game, CLARITY**: rules and steps taken from the project code (SQL queries, Express middleware, AI prompts).
 
+### Pendulum control with Deep Q-Learning
+
+I trained and tuned a Deep Q-Network to control a simulated pendulum using nine torque values from −2 to +2 N·m. The final network has two 128-unit ReLU layers and was trained for 700 episodes at gravity 10. In ten fixed-seed evaluation episodes, mean return improved from −156.46 to −152.56, a gain of 3.90 points. Multiple training seeds would be needed to measure how consistent that improvement is.
+
+[Try the interactive demo](https://yan-myoe-naing.github.io/#demo-pendulum-dqn). It runs the original checkpoint's weights in JavaScript and compares the greedy policy with zero torque from the same starting angle. The four gravity settings use [Gym 0.17.3 pendulum dynamics](https://github.com/openai/gym/blob/0.17.3/gym/envs/classic_control/pendulum.py). Settings away from gravity 10 show how the default-gravity policy transfers.
+
+The [export script](tools/export_pendulum_model.py) converts the Keras checkpoint to the browser's JSON weights.
+
 ## Run it locally
 
 `fetch()` doesn't work when you open the file directly from disk, so start a tiny server first:

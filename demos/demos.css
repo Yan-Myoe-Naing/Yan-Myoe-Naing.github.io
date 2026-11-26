@@ -105,6 +105,10 @@ html.demo-open { overflow: hidden; }
 .chart-box--short { height: 220px; }
 .big-number { font: 700 clamp(2.2rem, 5vw, 3.4rem)/1 var(--font-ui); letter-spacing: -.03em; margin: 6px 0; }
 .demo-result { display: flex; flex-direction: column; justify-content: center; }
+.demo-btn { font: 700 .85rem var(--font-ui); border: 1px solid var(--ink); border-radius: 999px; padding: 8px 16px; background: white; color: var(--ink); cursor: pointer; }
+.demo-btn:hover, .demo-btn:focus-visible { background: var(--blue-pale); }
+.demo-btn[data-play] { background: var(--ink); color: white; min-width: 86px; }
+.demo-btn[data-play]:hover { background: var(--blue-deep); }
 
 /* controls */
 .demo-controls { display: flex; flex-direction: column; gap: 12px; }

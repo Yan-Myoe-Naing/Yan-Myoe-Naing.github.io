@@ -6,7 +6,7 @@
      downloaded when a preview or demo needs them.
    ========================================================= */
 (function () {
-  const VERSION = "8";
+  const VERSION = "9";
   const BASE = "demos/";
   const COLORS = {
     blue: "#7db6ec", deep: "#3d8fdc", pale: "#d9eafb", ink: "#141419", ink2: "#1f1f27",

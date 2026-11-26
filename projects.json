@@ -20,6 +20,7 @@
     "filter_categories": [
       "Machine learning",
       "Deep learning",
+      "Reinforcement learning",
       "Data analysis",
       "Data engineering",
       "Agentic AI",
@@ -67,6 +68,16 @@
     }
   ],
   "projects": [
+    {
+      "title": "Pendulum Control with Deep Q-Learning",
+      "slug": "pendulum-dqn",
+      "link": "https://github.com/Yan-Myoe-Naing/Yan-Myoe-Naing.github.io/blob/main/demos/pendulum-dqn.js",
+      "summary": "I trained and tuned a Deep Q-Network to swing a pendulum upright using nine torque choices. Try the trained model against a zero-torque control and test how it handles different gravity settings.",
+      "tags": ["DQN", "Reinforcement learning", "TensorFlow"],
+      "categories": ["Reinforcement learning", "Deep learning"],
+      "year": "2026",
+      "featured": true
+    },
     {
       "title": "Q AI — Trusted AI Answer Checker",
       "slug": "q-ai",
