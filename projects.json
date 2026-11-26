@@ -77,27 +77,43 @@
     {
       "title": "Catch & Go Pilot Location Analysis",
       "slug": "catch-and-go",
+      "card": "dark",
       "link": "catch-and-go.html",
       "link_label": "View case study",
       "summary": "I built the Power BI analysis of frequent gamers who play for well-being and wrote the synthesis and rollout recommendation. Our team recommended piloting the game in Hougang, then expanding to Yishun if the pilot succeeds.",
-      "tags": ["Power BI", "Geospatial analysis", "Data storytelling"],
-      "categories": ["Data analysis"],
+      "tags": [
+        "Power BI",
+        "Geospatial analysis",
+        "Data storytelling"
+      ],
+      "categories": [
+        "Data analysis"
+      ],
       "year": "2026",
       "featured": true
     },
     {
       "title": "Pendulum Control with Deep Q-Learning",
       "slug": "pendulum-dqn",
+      "card": "blue",
       "link": "https://github.com/Yan-Myoe-Naing/Yan-Myoe-Naing.github.io/blob/main/demos/pendulum-dqn.js",
       "summary": "I trained and tuned a Deep Q-Network to swing a pendulum upright using nine torque choices. Try the trained model against a zero-torque control and test how it handles different gravity settings.",
-      "tags": ["DQN", "Reinforcement learning", "TensorFlow"],
-      "categories": ["Reinforcement learning", "Deep learning"],
+      "tags": [
+        "DQN",
+        "Reinforcement learning",
+        "TensorFlow"
+      ],
+      "categories": [
+        "Reinforcement learning",
+        "Deep learning"
+      ],
       "year": "2026",
       "featured": true
     },
     {
       "title": "Q AI — Trusted AI Answer Checker",
       "slug": "q-ai",
+      "card": "mid",
       "repo": "",
       "link": "https://github.com/William35-f/OCBC_ignite_QAI",
       "summary": "I built the React frontend and verdict displays for Q AI, a prototype that checks a simulated bank assistant’s answers against policy. I represented Singapore Polytechnic at OCBC Ignite with Team Quadrant.",
@@ -118,6 +134,7 @@
     {
       "title": "CLARITY — Agentic AI Insurance Navigator",
       "slug": "clarity",
+      "card": "dark",
       "repo": "",
       "link": "https://github.com/William35-f/Clarity-Agentic-AI-insurance-navigator",
       "summary": "Team Aspire hackathon prototype: six AI agents support an insurance consultation, with live meeting cues, policy sources, meeting records and customer follow-up. Represented Singapore Polytechnic at the category finals.",
@@ -137,6 +154,7 @@
     {
       "title": "Library Data Engineering Pipeline",
       "slug": "library-pipeline",
+      "card": "blue",
       "repo": "library-data-engineering-pipeline",
       "summary": "End-to-end pipeline for a library: MySQL operational database, a star-schema data warehouse, and a Bronze/Silver/Gold data lake in Parquet with DuckDB reporting. It validates 12,343 completed loans, and invalid rows go to quarantine instead of being deleted.",
       "tags": [
@@ -153,6 +171,7 @@
     {
       "title": "Library Management Database",
       "slug": "library-database",
+      "card": "mid",
       "repo": "library-management-database",
       "summary": "A MySQL relational database for members, tiers, staff, books, copies and loans, with SQL queries that check borrowing eligibility and available copies.",
       "tags": [
@@ -168,6 +187,7 @@
     {
       "title": "Machine Failure Detection",
       "slug": "machine-failure",
+      "card": "dark",
       "repo": "machine-failure-detection",
       "summary": "Machine learning for detecting industrial equipment failures before they happen.",
       "tags": [
@@ -183,6 +203,7 @@
     {
       "title": "House Price Prediction",
       "slug": "house-price",
+      "card": "blue",
       "repo": "house-price-prediction",
       "summary": "A regression project estimating house prices from property features.",
       "tags": [
@@ -198,6 +219,7 @@
     {
       "title": "Customer Clustering",
       "slug": "customer-clustering",
+      "card": "mid",
       "repo": "customer-clustering",
       "summary": "Grouping customers into segments with clustering, using PCA to explore and visualise the groups.",
       "tags": [
@@ -213,6 +235,7 @@
     {
       "title": "Energy Consumption Forecasting",
       "slug": "energy-forecasting",
+      "card": "dark",
       "repo": "energy-consumption-forecasting",
       "summary": "Time-series models forecasting electricity, gas and water consumption.",
       "tags": [
@@ -228,6 +251,7 @@
     {
       "title": "Handwritten Letter Recognition",
       "slug": "emnist",
+      "card": "blue",
       "repo": "handwritten-letter-recognition-cnn",
       "summary": "A CNN trained on EMNIST to recognise handwritten letters, with a drawing demo to test it live.",
       "tags": [
@@ -243,6 +267,7 @@
     {
       "title": "Job Market Application Analysis",
       "slug": "job-market",
+      "card": "dark",
       "repo": "job-market-application-analysis",
       "summary": "Analysing applications, salaries, visibility and demand across job titles.",
       "tags": [
@@ -257,6 +282,7 @@
     {
       "title": "Singapore Graduate Career Outcomes",
       "slug": "graduate-outcomes",
+      "card": "blue",
       "repo": "singapore-graduate-career-outcomes",
       "summary": "Exploring Singapore graduate career outcomes by degree and gender, with UiPath automation.",
       "tags": [
@@ -272,6 +298,7 @@
     {
       "title": "Wellness Challenge Game",
       "slug": "wellness-game",
+      "card": "mid",
       "repo": "Wellness_Challenge_Game",
       "summary": "A strategy game where completing wellness challenges earns points to build cities, recruit armies and form alliances. Full-stack CRUD app with login.",
       "tags": [

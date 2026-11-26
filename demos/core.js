@@ -6,7 +6,7 @@
      downloaded when a preview or demo needs them.
    ========================================================= */
 (function () {
-  const VERSION = "13";
+  const VERSION = "15";
   const BASE = "demos/";
   const COLORS = {
     blue: "#7db6ec", deep: "#3d8fdc", pale: "#d9eafb", ink: "#141419", ink2: "#1f1f27",
@@ -92,6 +92,21 @@
     colors: COLORS, fonts: { ui: FONT_UI, mono: FONT_MONO }, reduceMotion, esc,
   };
 
+  // ---------- card colours ----------
+  // Cards cycle through three backgrounds (dark / light blue / mid blue).
+  // Every preview asks this helper which colours read well on its card.
+  function cardTone(el) {
+    const art = el.closest(".post__art");
+    const bg = art && art.classList.contains("post__art--blue") ? "blue" : art && art.classList.contains("post__art--mid") ? "mid" : "dark";
+    return {
+      bg,
+      main: bg === "blue" ? COLORS.ink : bg === "mid" ? "#a9cff3" : COLORS.blue,                 // primary marks
+      deep: bg === "blue" ? COLORS.ink : bg === "mid" ? "#d9eafb" : COLORS.deep,                 // bars / strong marks
+      soft: bg === "blue" ? "rgba(20,20,25,.58)" : bg === "mid" ? "rgba(217,234,251,.55)" : "rgba(125,182,236,.55)",
+      faint: bg === "blue" ? "rgba(20,20,25,.13)" : bg === "mid" ? "rgba(255,255,255,.16)" : "rgba(255,255,255,.14)",
+    };
+  }
+
   /* =========================================================
      CARD PREVIEWS ("peeks")
      ========================================================= */
@@ -120,7 +135,7 @@
     } },
     "customer-clustering": { kind: "chart", dark: false, async build(el, ec, tone) {
       const d = await loadJSON("previews.json").then((p) => p.clusters);
-      const cols = [tone.main === COLORS.ink ? COLORS.ink : COLORS.blue, COLORS.orange];
+      const cols = [tone.main, COLORS.orange];
       return makeChart(ec, el, {
         grid: { left: 8, right: 8, top: 8, bottom: 8 }, tooltip: { show: false },
         xAxis: { type: "value", show: false, scale: true }, yAxis: { type: "value", show: false, scale: true },
@@ -204,11 +219,14 @@
 
   // EMNIST peek: letters appear as 28x28 pixel grids, with a prediction tag
   function letterPeek(el) {
+    const tone = cardTone(el);
+    const ink = tone.main, softInk = tone.soft, gridInk = tone.faint;
     const cv = document.createElement("canvas");
     cv.className = "peek-canvas";
     el.appendChild(cv);
     const tag = document.createElement("span");
     tag.className = "peek-tag mono";
+    if (tone.bg === "blue") tag.style.color = COLORS.ink;
     el.appendChild(tag);
     const off = document.createElement("canvas"); off.width = off.height = 28;
     const o = off.getContext("2d", { willReadFrequently: true });
@@ -227,8 +245,8 @@
       g.clearRect(0, 0, r.width, r.height);
       for (let y = 0; y < 28; y++) for (let x = 0; x < 28; x++) {
         const v = px[(y * 28 + x) * 4] / 255;
-        g.fillStyle = v > 0.5 ? COLORS.blue : v > 0.15 ? "rgba(125,182,236,.45)" : "rgba(255,255,255,.07)";
-        const s = v > 0.5 ? cell * 0.8 : cell * 0.35;
+        g.fillStyle = v > 0.5 ? ink : v > 0.15 ? softInk : gridInk;
+        const s = cell * (v > 0.5 ? 0.84 : v > 0.15 ? 0.62 : 0.27);
         g.fillRect(ox + x * cell + (cell - s) / 2, oy + y * cell + (cell - s) / 2, s, s);
       }
       tag.textContent = "→ " + L;
@@ -273,7 +291,7 @@
   function agentsPeek(el) {
     const names = ["Interview", "Schedule", "Prep", "Copilot", "Cues", "Record", "Follow-up"];
     el.innerHTML = `<div class="peek-agents">${names.map((n) => `<span class="peek-agent"><i></i>${n}</span>`).join("")}</div>`;
-    const base = el.closest(".post__art--blue") ? COLORS.ink : COLORS.blue;
+    const base = cardTone(el).main;
     let anim = null;
     getAnime().then((A) => {
       if (reduceMotion) return;
@@ -311,9 +329,7 @@
         box.className = "peek-chart";
         el.appendChild(box);
         const ec = await getECharts();
-        const onBlue = Boolean(el.closest(".post__art--blue"));
-        const tone = { main: onBlue ? COLORS.ink : COLORS.blue, deep: onBlue ? COLORS.ink : COLORS.deep, faint: onBlue ? "rgba(20,20,25,.35)" : "rgba(125,182,236,.45)" };
-        await p.build(box, ec, tone);
+        await p.build(box, ec, cardTone(el));
       } else {
         p.build(el);
       }

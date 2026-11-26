@@ -34,6 +34,7 @@ Tip: add a good *About* description and some *Topics* to the repo on GitHub, bec
 ```
 
 - `repo` is the exact repo name on GitHub. It links the card and fills in the year.
+- `card` (optional) pins the card's colour: `"dark"`, `"blue"` or `"mid"`. Without it, colours cycle by position.
 - Every project gets a card in the carousel and a row in **All work**. `featured: true` moves it to the front of the carousel.
 - Optional: `"demo": "https://..."` adds a demo link, and `"year": "2026"` overrides the year.
 - `categories` decides which filter button (above **All work**) shows the project. The buttons are listed in `settings.filter_categories`, and you can rename or add them there.

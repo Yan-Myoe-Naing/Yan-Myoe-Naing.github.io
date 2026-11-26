@@ -89,6 +89,7 @@ function buildProjectList(config, repos) {
     return {
       title: p.title,
       slug: p.slug || "",            // links the card to its preview + demo in demos/
+      card: p.card || "",            // optional fixed card colour: "dark", "blue" or "mid"
       page: p.page || "",            // optional case-study page
       summary: p.summary || repo?.description || "",
       tags: p.tags?.length ? p.tags : [repo?.language].filter(Boolean),
@@ -129,6 +130,9 @@ const ICONS = {
   save: '<svg viewBox="0 0 24 24"><path d="M6 3h12v18l-6-5-6 5z"/></svg>',
 };
 const ART_STYLES = ["dark", "blue", "mid"];
+// A project can pin its card colour in projects.json ("card": "dark" | "blue" | "mid");
+// otherwise colours cycle by position, so adding a project never repaints the pinned ones.
+const cardStyle = (p, i) => (ART_STYLES.includes(p.card) ? p.card : ART_STYLES[i % ART_STYLES.length]);
 
 // A card shows a live preview when demos/core.js has one for its slug
 const hasPeek = (p) => Boolean(p.slug && window.Demos && window.Demos.hasPreview(p.slug));
@@ -146,7 +150,7 @@ function renderFeatured(projects, user) {
         <span class="post__handle">${esc(handle)}</span>
         <span class="post__dots">•••</span>
       </div>
-      <div class="post__art post__art--${ART_STYLES[i % ART_STYLES.length]}${hasPeek(p) ? " has-peek" : ""}">
+      <div class="post__art post__art--${cardStyle(p, i)}${hasPeek(p) ? " has-peek" : ""}">
         ${hasPeek(p)
           ? `<div class="post__peek" data-preview="${esc(p.slug)}" aria-hidden="true"></div>`
           : `<span class="post__glyph" aria-hidden="true">${esc(initials(p.title))}</span>`}
