@@ -6,7 +6,7 @@
      downloaded when a preview or demo needs them.
    ========================================================= */
 (function () {
-  const VERSION = "15";
+  const VERSION = "16";
   const BASE = "demos/";
   const COLORS = {
     blue: "#7db6ec", deep: "#3d8fdc", pale: "#d9eafb", ink: "#141419", ink2: "#1f1f27",
@@ -181,6 +181,7 @@
     "emnist": { kind: "anim", build: (el) => letterPeek(el) },
     "pendulum-dqn": { kind: "anim", build: (el) => pendulumPeek(el) },
     "catch-and-go": { kind: "anim", build: (el) => catchAndGoPeek(el) },
+    "burmese-poetry": { kind: "anim", build: (el) => burmesePoetryPeek(el) },
     "library-pipeline": { kind: "anim", build: (el) => pipelinePeek(el) },
     "library-database": { kind: "image", src: "demos/img/library-erd.webp", alt: "Entity-relationship diagram of the library database" },
     "wellness-game": { kind: "anim", build: (el) => cityPeek(el) },
@@ -215,6 +216,15 @@
       <circle cx="190" cy="65" r="7" fill="var(--orange)"/>
       <text x="190" y="98" fill="currentColor" text-anchor="middle" class="mono" font-size="12">Hougang</text>
     </svg>`;
+  }
+
+  function burmesePoetryPeek(el) {
+    el.innerHTML = `<div class="peek-poetry">
+      <span class="peek-poetry__label mono">Input phrase</span>
+      <span class="poetry-myanmar" lang="my">ခန္ဓာတွင်းပြင်</span>
+      <span class="peek-poetry__label mono">Model continuation</span>
+      <span class="poetry-myanmar peek-poetry__output" lang="my">အရှင်မင်းရှင်</span>
+    </div>`;
   }
 
   // EMNIST peek: letters appear as 28x28 pixel grids, with a prediction tag

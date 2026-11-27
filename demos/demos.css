@@ -41,6 +41,22 @@
 .post__art--blue .post__try:hover { background: var(--orange); }
 
 /* preview animations */
+@font-face {
+  font-family: "Noto Sans Myanmar";
+  src: url("../fonts/noto-sans-myanmar-400.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+  unicode-range: U+1000-109F, U+A9E0-A9FF, U+AA60-AA7F;
+}
+.poetry-myanmar { font: 400 clamp(1.05rem, 2.5vw, 1.65rem)/1.85 "Noto Sans Myanmar", "Myanmar Text", "Myanmar Sangam MN", sans-serif; overflow-wrap: anywhere; }
+.peek-poetry { display: grid; gap: 3px; align-content: center; width: 82%; padding: 10px 14px; border-inline-start: 2px solid currentColor; }
+.peek-poetry__label { font-size: .68rem; opacity: .82; }
+.peek-poetry__output { color: #ffd9a9; }
+.post__art--blue .peek-poetry__output { color: #20395d; }
+.poetry-context { margin-top: 8px; padding-inline-start: 12px; border-inline-start: 3px solid var(--blue-deep); }
+.poetry-reference { margin-top: 16px; }
+.poetry-reference summary { cursor: pointer; font-weight: 700; }
+.poetry-results { margin-top: 16px; }
 .peek-schematic { display: block; width: 100%; height: 100%; min-height: 0; }
 .peek-pendulum__arm { transform-origin: 150px 80px; transform: rotate(34deg); }
 @media (prefers-reduced-motion: no-preference) {
