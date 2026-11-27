@@ -77,10 +77,18 @@
     {
       "title": "Burmese Classical Poetry Generation",
       "slug": "burmese-poetry",
+      "card": "mid",
       "repo": "burmese-classical-poetry-generation",
-      "summary": "Can a model learn the rhythm and rhyme of classical Burmese verse? I built a syllable-level corpus and compared LSTM and GRU models on how well they continue a poem.",
-      "tags": ["Natural language processing", "GRU / LSTM", "TensorFlow"],
-      "categories": ["Deep learning"],
+      "summary": "Can a model learn the rhythm and rhyme of classical Burmese verse? I built a syllable-level corpus, compared LSTM and GRU models, and added additive attention over the last four phrases. Write an opening and watch which syllables the attention model looks at.",
+      "tags": [
+        "Attention",
+        "GRU / LSTM",
+        "NLP",
+        "TensorFlow"
+      ],
+      "categories": [
+        "Deep learning"
+      ],
       "year": "2026",
       "featured": true
     },

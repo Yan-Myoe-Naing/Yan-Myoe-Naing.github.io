@@ -6,7 +6,7 @@
      downloaded when a preview or demo needs them.
    ========================================================= */
 (function () {
-  const VERSION = "16";
+  const VERSION = "17";
   const BASE = "demos/";
   const COLORS = {
     blue: "#7db6ec", deep: "#3d8fdc", pale: "#d9eafb", ink: "#141419", ink2: "#1f1f27",
@@ -218,13 +218,39 @@
     </svg>`;
   }
 
+  // Burmese poetry peek: a real recorded run of the attention model. Each new syllable
+  // appears, and lines show which context syllables attention looked at (thicker = more).
   function burmesePoetryPeek(el) {
-    el.innerHTML = `<div class="peek-poetry">
-      <span class="peek-poetry__label mono">Input phrase</span>
-      <span class="poetry-myanmar" lang="my">ခန္ဓာတွင်းပြင်</span>
-      <span class="peek-poetry__label mono">Model continuation</span>
-      <span class="poetry-myanmar peek-poetry__output" lang="my">အရှင်မင်းရှင်</span>
-    </div>`;
+    el.innerHTML = `<div class="peek-attn"><svg class="peek-attn__lines" aria-hidden="true"></svg>
+      <div class="peek-attn__row peek-attn__ctx poetry-myanmar" lang="my"></div>
+      <span class="peek-attn__label mono">attention</span>
+      <div class="peek-attn__row peek-attn__out poetry-myanmar" lang="my"></div></div>`;
+    let timer = null, alive = true;
+    loadJSON("burmese-poetry.json").then((d) => {
+      if (!alive) return;
+      const { context, output, attention } = d.peek;
+      const ctxRow = el.querySelector(".peek-attn__ctx"), outRow = el.querySelector(".peek-attn__out"), svg = el.querySelector("svg");
+      ctxRow.innerHTML = context.map((t) => `<span class="${t === "<PHRASE_END>" ? "is-end" : ""}">${t === "<PHRASE_END>" ? "¶" : esc(t)}</span>`).join("");
+      outRow.innerHTML = output.map((t) => `<span>${esc(t)}</span>`).join("");
+      const ctxEls = [...ctxRow.children], outEls = [...outRow.children];
+      let step = -1;
+      function draw() {
+        step = (step + 1) % (output.length + 2);          // two extra beats to pause on the full line
+        const k = Math.min(step, output.length - 1);
+        outEls.forEach((e, i) => e.classList.toggle("is-on", i <= step));
+        const box = el.getBoundingClientRect(), o = outEls[k].getBoundingClientRect();
+        svg.setAttribute("viewBox", `0 0 ${box.width} ${box.height}`);
+        const att = attention[k], mx = Math.max(...att);
+        ctxEls.forEach((e, i) => e.style.setProperty("--w", (att[i] / mx).toFixed(3)));
+        svg.innerHTML = step >= output.length ? "" : att.map((w, i) => {
+          const c = ctxEls[i].getBoundingClientRect();
+          const x1 = o.left + o.width / 2 - box.left, y1 = o.top - box.top, x2 = c.left + c.width / 2 - box.left, y2 = c.bottom - box.top;
+          return w / mx < 0.08 ? "" : `<path d="M${x1} ${y1} C ${x1} ${(y1 + y2) / 2}, ${x2} ${(y1 + y2) / 2}, ${x2} ${y2}" stroke-width="${(0.6 + 5 * w).toFixed(2)}" opacity="${(0.25 + 0.75 * w / mx).toFixed(2)}"/>`;
+        }).join("");
+      }
+      document.fonts.ready.then(() => { if (!alive) return; draw(); if (!reduceMotion) timer = setInterval(draw, 1100); });
+    }).catch(() => el.classList.add("is-failed"));
+    return { dispose() { alive = false; clearInterval(timer); } };
   }
 
   // EMNIST peek: letters appear as 28x28 pixel grids, with a prediction tag

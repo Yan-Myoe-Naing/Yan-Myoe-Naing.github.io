@@ -380,3 +380,45 @@ input[type="range"]::-moz-range-thumb { width: 16px; height: 16px; border-radius
 @media (prefers-reduced-motion: reduce) {
   .post__peek, .post__peek img, .peek-stamp, .gauge__fill { transition: none !important; }
 }
+
+/* ---------- Burmese poetry: attention preview ---------- */
+.peek-attn { position: relative; width: 92%; height: 82%; display: grid; grid-template-rows: auto 1fr auto; align-items: center; }
+.peek-attn__lines { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
+.peek-attn__lines path { fill: none; stroke: var(--orange); stroke-linecap: round; transition: opacity .4s; }
+.peek-attn__row { position: relative; z-index: 1; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px; font-size: 1.05rem; line-height: 1.6; }
+.peek-attn__ctx span { --w: 0; padding: 0 5px; border-radius: 6px; background: color-mix(in srgb, var(--orange) calc(var(--w) * 70%), transparent); transition: background .45s ease; }
+.peek-attn__ctx span.is-end { opacity: .55; font-family: var(--font-mono); font-size: .8rem; }
+.peek-attn__label { justify-self: center; font-size: .62rem; opacity: .6; letter-spacing: .1em; text-transform: uppercase; }
+.peek-attn__out { font-size: 1.3rem; font-weight: 700; }
+.peek-attn__out span { opacity: .12; transition: opacity .3s ease, transform .3s ease; transform: translateY(4px); }
+.peek-attn__out span.is-on { opacity: 1; transform: none; }
+
+/* ---------- Burmese poetry: demo ---------- */
+.poem-intro { background: var(--ink); color: #e9eef6; border-radius: 16px; padding: 14px 18px; margin-bottom: 16px; font-size: .9rem; line-height: 1.6; }
+.poem-intro .demo-kicker { color: var(--blue); }
+.poem-intro code { background: rgba(125,182,236,.18); color: #fff; }
+.poem-input { width: 100%; resize: vertical; padding: 8px 12px; border: 1.5px solid #d6d6dc; border-radius: 12px; font-size: 1.15rem; background: #fff; }
+.poem-input:focus { outline: 2px solid var(--blue-deep); border-color: transparent; }
+.poem-tokens { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; }
+.tok { font: 1rem/1.7 "Noto Sans Myanmar", "Myanmar Text", sans-serif; padding: 0 7px; border-radius: 6px; background: var(--blue-pale); }
+.tok--end { font: .75rem var(--font-mono); background: #ececf1; }
+.tok--unk { background: #fde8eb; color: #b42335; }
+.poem-starters summary { cursor: pointer; font-size: .75rem; margin-bottom: 6px; }
+.poem-starters .chip-btn { font: 1rem/1.4 "Noto Sans Myanmar", "Myanmar Text", sans-serif; }
+.poem-out { display: flex; flex-direction: column; }
+.poem-lines { display: grid; gap: 4px; align-content: start; min-height: 180px; }
+.poem-line { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px; margin: 0; }
+.syl { font: inherit; color: inherit; border: 0; background: transparent; padding: 0 3px; border-radius: 6px; cursor: pointer; transition: background .2s, color .2s; }
+.syl:hover { background: var(--blue-pale); }
+.syl.is-sel { background: var(--orange); color: #fff; }
+.poem-mark { margin-left: 2px; color: var(--grey); }
+.poem-context { display: flex; flex-wrap: wrap; gap: 5px; margin: 6px 0 12px; }
+.ctx-tok { --w: 0; position: relative; padding: 2px 8px 14px; border-radius: 8px; font-size: 1.1rem; border: 1px solid #e4e4ea;
+  background: color-mix(in srgb, var(--orange) calc(var(--w) * 85%), #fff); color: color-mix(in srgb, #fff calc(var(--w) * 100%), var(--ink)); transition: background .25s, color .25s; }
+.ctx-tok i { position: absolute; left: 0; right: 0; bottom: 1px; text-align: center; font: .58rem var(--font-mono); font-style: normal; opacity: .75; }
+.ctx-tok--end { font: .8rem var(--font-mono); padding-top: 6px; }
+.poem-detail { margin-top: 0; }
+.bar-row--wide { grid-template-columns: minmax(70px, 120px) 1fr 44px; }
+.poem-grid .demo-panel .tabs { margin-top: 8px; }
+@media (max-width: 820px) { .peek-attn__row { font-size: .9rem; } }
+@media (max-width: 820px) { .poem-grid .poem-out { order: -1; } .poem-lines { min-height: 120px; } }
